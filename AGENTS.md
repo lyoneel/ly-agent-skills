@@ -18,7 +18,7 @@ skill-name/
   assets/        # static data, images, lookup tables
 ```
 
-Current skills: `agent`, `aur-pkg-analysis`, `gen-agent`.
+Current skills: `agent`, `aur-pkg-analysis`, `gen-agent`, `git-aware-mv`.
 
 ## How Skills Work
 
