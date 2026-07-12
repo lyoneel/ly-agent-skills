@@ -9,6 +9,7 @@ NOTE: GitHub and GitLab are public mirrors, every change is force-pushed here.
 - [Agent Loader](agent/README.md) — load custom agent definitions as system prompt overrides (archived, Windsurf-era)
 - [AUR Package Analysis](aur-pkg-analysis/README.md) — clean up AUR packages by finding official alternatives and removal commands
 - [Gen Agent](gen-agent/README.md) — scaffold new agent definition files with proper structure (archived, legacy)
+- [Git-Aware File Move](git-aware-mv/README.md) — move files with git history preservation
 
 ## Philosophy
 
@@ -35,7 +36,9 @@ Context is loaded progressively. Only the reference needed for the current step 
 
 If the logic is rigid and repeatable, it belongs in a script — not in the agent's reasoning.
 
-The skill's role is to orchestrate, not to calculate. A bash script that parses output or a Python script that validates structure costs nothing to run and never hallucinates. Shift work from the LLM to scripts whenever possible.
+The skill's role is to orchestrate, not to calculate. A script that parses output or validates structure costs nothing to run and never hallucinates. Shift work from the LLM to scripts whenever possible.
+
+Scripts use Python for cross-platform compatibility. Bash only works on macOS and Linux, excluding Windows users. Python runs everywhere the agent might be used. Avoid Bash entirely — prefer Python equivalents for all scripting tasks.
 
 ### Track Progress
 
