@@ -2,7 +2,7 @@
 
 A curated collection of agent skills, designed and developed using [Crush](https://github.com/charmbracelet/crush) and Qwen3.6 27B.
 
-NOTE: GitHub and GitLab are public mirrors, every change is force-pushed here.
+> **NOTE**: GitHub and GitLab are public mirrors, every change is force-pushed here.
 
 ## Skills
 
