@@ -40,7 +40,8 @@ All skills use the `todos` tool to track progress. Todos are initialized at the 
 
 ### No Fluff
 
-No emojis, bold, italics, or HTML. Code blocks always specify a language. Paths always relative.
+Markdown instructions go straight to the point, no fluff, no prose, just direct
+language optimized for agents.
 
 ## License
 
