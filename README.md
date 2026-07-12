@@ -6,7 +6,9 @@ NOTE: GitHub and GitLab are public mirrors, every change is force-pushed here.
 
 ## Skills
 
+- [Agent Loader](agent/README.md) — load custom agent definitions as system prompt overrides (archived, Windsurf-era)
 - [AUR Package Analysis](aur-pkg-analysis/README.md) — clean up AUR packages by finding official alternatives and removal commands
+- [Gen Agent](gen-agent/README.md) — scaffold new agent definition files with proper structure
 
 ## Philosophy
 
