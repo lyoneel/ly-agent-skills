@@ -1,4 +1,6 @@
-# Gen Agent
+# Gen Agent (Archived)
+
+*Legacy skill — kept for reference only.*
 
 A skill for generating new agent definition files with proper structure and metadata.
 
