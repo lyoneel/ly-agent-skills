@@ -29,12 +29,6 @@ Context is loaded progressively. Only the reference needed for the current step 
 
 If the logic is rigid and repeatable, it belongs in a script — not in the agent's reasoning.
 
-|             | Script           | LLM Reasoning     |
-| ----------- | ---------------- | ----------------- |
-| Speed       | Fast             | Slow              |
-| Cost        | Near-zero tokens | Expensive         |
-| Reliability | Deterministic    | Non-deterministic |
-
 The skill's role is to orchestrate, not to calculate. A bash script that parses output or a Python script that validates structure costs nothing to run and never hallucinates. Shift work from the LLM to scripts whenever possible.
 
 ### Track Progress
