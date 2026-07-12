@@ -15,12 +15,6 @@ NOTE: GitHub and GitLab are public mirrors, every change is force-pushed here.
 
 These skills are built to be lean, fast, and reliable. Every design decision serves one goal: make agents better at their jobs.
 
-### Split Complexity
-
-When a skill grows beyond 500 lines or handles multiple distinct workflows, it gets split. Detailed workflows move into `references/` as separate documents (`action-create.md`, `mode-execute.md`). The SKILL.md stays as a router — overview, mode detection, and dispatch — while the heavy logic lives in focused reference files.
-
-If the skill truly orchestrates multiple sub-skills, it coordinates without duplicating their work.
-
 ### Keep SKILL.md Lean
 
 The SKILL.md body is the agent's working memory. It suggested size is under 5000 tokens so the model can hold the full instructions in context. Heavy content has a home, but not here:
