@@ -1,38 +1,55 @@
 # ly-agent-skills
 
-A collection of agent skills iterated over time. No specific purpose beyond doing one thing well.
+A curated collection of agent skills, designed and developed using [Crush](https://github.com/charmbracelet/crush) and Qwen3.6 27B.
+
+NOTE: GitHub and GitLab are public mirrors, every change is force-pushed here.
 
 ## Philosophy
 
-These skills follow a clean-code approach applied to agent tooling. Two core principles:
+These skills are built to be lean, fast, and reliable. Every design decision serves one goal: make agents better at their jobs.
 
-### 1. Single Responsibility
+### Split Complexity
 
-Each skill does one thing and does it well. No bloated multi-purpose skills. If it sounds like it should be two skills, it is.
+When a skill grows beyond 500 lines or handles multiple distinct workflows, it gets split. Detailed workflows move into `references/` as separate documents (`action-create.md`, `mode-execute.md`). The SKILL.md stays as a router — overview, mode detection, and dispatch — while the heavy logic lives in focused reference files.
 
-### 2. Script the Deterministic
+If the skill truly orchestrates multiple sub-skills, it coordinates without duplicating their work.
+
+### Keep SKILL.md Lean
+
+The SKILL.md body is the agent's working memory. It stays under 5000 tokens so the model can hold the full instructions in context. Heavy content has a home, but not here:
+
+- **`references/`** — prose documentation: workflows, guides, constraints, and detailed explanations. Files use prefix-based naming (`action-`, `mode-`, `guide-`, `constraint-`) for quick identification.
+- **`templates/`** — reusable structures: YAML frontmatter, markdown skeletons, config boilerplate. Files meant to be copied or adapted, not read for guidance.
+- **`scripts/`** — executable automation: entry point scripts and internal modules for deterministic work.
+- **`assets/`** — static data: images, lookup tables, and reference data.
+
+Context is loaded progressively. Only the reference needed for the current step is read. This keeps prompts lean and focused.
+
+### Scripts Do the Heavy Lifting
 
 If the logic is rigid and repeatable, it belongs in a script — not in the agent's reasoning.
 
-| | Script | LLM Reasoning |
-|---|---|---|
-| Speed | Fast | Slow |
-| Cost | Near-zero tokens | Expensive |
-| Reliability | Deterministic | Non-deterministic |
+|             | Script           | LLM Reasoning     |
+| ----------- | ---------------- | ----------------- |
+| Speed       | Fast             | Slow              |
+| Cost        | Near-zero tokens | Expensive         |
+| Reliability | Deterministic    | Non-deterministic |
 
-The skill's role is to **orchestrate**, not to calculate. Shift work from the LLM to scripts whenever possible.
+The skill's role is to orchestrate, not to calculate. A bash script that parses output or a Python script that validates structure costs nothing to run and never hallucinates. Shift work from the LLM to scripts whenever possible.
 
-### 3. Compose Over Monolith
+### Track Progress
 
-When a workflow is too complex for a single skill, break it down into smaller, focused skills and create an orchestrator to coordinate them. One skill, one job — even the orchestrator's job is just orchestration.
+All skills use the `todos` tool to track execution state. This serves two audiences:
 
-### 4. Track State Explicitly
+- **Capable models** stay within context limits by having clear progress checkpoints. Instead of re-deriving where they are, they read the todo list and continue.
+- **Less capable models** get the best possible chance of reaching the goal through structured, step-by-step execution with explicit checkpoints.
 
-All skills follow the [agentskills.io spec](https://agentskills.io) and enforce the use of task-tracking tools (e.g. `todos`). This ensures:
+Todos are initialized at the start of every workflow, updated as each step completes, and cleared on finish. The skill never guesses where it left off.
 
-- **Capable models** stay within context limits by having a clear progress checkpoint.
-- **Less capable models** have the best possible chance of reaching the goal through structured, step-by-step execution.
+### No Fluff
 
-### 5. Reference Over Inline
+Skill files follow strict formatting rules. No emojis, no bold, no italics, no HTML. Code blocks always specify a language. Paths are always relative. The goal is clean, scannable instructions an agent can parse and follow at speed — nothing decorative, nothing ambiguous.
 
-Context is loaded via `references/` files, not baked into the skill body. Only the context needed for the current step is loaded — keeping prompts lean and focused.
+## Contributing
+
+Contributions are welcome. Submit a PR and it will be reviewed. Note that not all proposals will be accepted.
