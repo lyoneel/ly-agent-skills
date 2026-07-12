@@ -41,7 +41,7 @@ When a skill exceeds 500 lines or handles multiple workflows, split detailed con
 
 ## Scripts Over Logic
 
-Put rigid, repeatable logic in scripts — not in the agent's reasoning. The skill orchestrates; scripts execute.
+Put rigid, repeatable logic in scripts — not in the agent's reasoning. The skill orchestrates; scripts execute. All scripts use Python for cross-platform compatibility.
 
 ## Commit Convention
 
