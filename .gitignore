@@ -1,0 +1,20 @@
+# Crush runtime
+.crush/
+
+# Environment
+.env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated artifacts
+RELEASE_SUMMARY.md
