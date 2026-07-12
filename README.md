@@ -33,17 +33,12 @@ The skill's role is to orchestrate, not to calculate. A bash script that parses 
 
 ### Track Progress
 
-All skills use the `todos` tool to track execution state. This serves two audiences:
-
-- **Capable models** stay within context limits by having clear progress checkpoints. Instead of re-deriving where they are, they read the todo list and continue.
-- **Less capable models** get the best possible chance of reaching the goal through structured, step-by-step execution with explicit checkpoints.
-
-Todos are initialized at the start of every workflow, updated as each step completes, and cleared on finish. The skill never guesses where it left off.
+All skills use the `todos` tool to track progress. Todos are initialized at the start, updated as each step completes, and cleared on finish.
 
 ### No Fluff
 
 Skill files follow strict formatting rules. No emojis, no bold, no italics, no HTML. Code blocks always specify a language. Paths are always relative. The goal is clean, scannable instructions an agent can parse and follow at speed — nothing decorative, nothing ambiguous.
 
-## Contributing
+## License
 
-Contributions are welcome. Submit a PR and it will be reviewed. Note that not all proposals will be accepted.
+MIT
