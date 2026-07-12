@@ -4,6 +4,10 @@ A curated collection of agent skills, designed and developed using [Crush](https
 
 NOTE: GitHub and GitLab are public mirrors, every change is force-pushed here.
 
+## Skills
+
+- [AUR Package Analysis](aur-pkg-analysis/README.md) — clean up AUR packages by finding official alternatives and removal commands
+
 ## Philosophy
 
 These skills are built to be lean, fast, and reliable. Every design decision serves one goal: make agents better at their jobs.
