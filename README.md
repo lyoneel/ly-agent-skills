@@ -21,7 +21,7 @@ The SKILL.md body is the agent's working memory — kept under 5000 tokens so th
 
 See [CONTRIBUTING](CONTRIBUTING.md) for the full directory structure and naming conventions.
 
-### Prefer Scripts
+### Scripts
 
 Rigid, repeatable logic belongs in a script, not in the agent's reasoning. Scripts parse, validate, and compute — the skill orchestrates. See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
