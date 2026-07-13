@@ -1,6 +1,6 @@
 # crush-session
 
-Manage Crush CLI sessions from the command line. Get the current session ID, rename, list, show details, or delete sessions.
+Agent Skill for managing Crush CLI conversation sessions. Wraps the `crush session` CLI to get the current session ID, rename conversations, list all sessions, inspect session details, and delete sessions by ID. Supports `--json` output for machine-readable results.
 
 ## Features
 
