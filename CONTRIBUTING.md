@@ -45,7 +45,7 @@ Put rigid, repeatable logic in scripts — not in the agent's reasoning. The ski
 
 ## Commit Convention
 
-Use [Conventional Commits](https://www.conventionalcommits.org/):
+Use [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/):
 
 - `feat:` new skill or feature
 - `fix:` bug fix
