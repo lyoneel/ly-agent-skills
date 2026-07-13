@@ -34,6 +34,10 @@ All skills use the `todos` tool to track progress. Todos are initialized at the 
 Markdown instructions go straight to the point, no fluff, no prose, just direct
 language optimized for agents.
 
+## Contributing
+
+Contributions are welcome via PR, but not guaranteed to be accepted. See [CONTRIBUTING](CONTRIBUTING.md) for details.
+
 ## License
 
 MIT
