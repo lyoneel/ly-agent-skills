@@ -11,6 +11,7 @@ A curated collection of agent skills, designed and developed using [Crush](https
 - [Crush Session](crush-session/README.md) — manage Crush CLI conversation sessions
 - [Gen Agent](gen-agent/README.md) — scaffold new agent definition files with proper structure (archived, legacy, companion of agent-loader)
 - [Git-Aware File Move](git-aware-mv/README.md) — move files with git history preservation
+- [Telegram Notify](tg-notify/README.md) — send messages to Telegram via the Bot API
 
 ## Philosophy
 
