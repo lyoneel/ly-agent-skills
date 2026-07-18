@@ -1,5 +1,7 @@
 # Contributing
 
+Contributions are accepted on a case-by-case basis. Please review the guidelines below before submitting changes.
+
 ## Skill Structure
 
 Each skill lives in its own directory at the repo root:
@@ -39,9 +41,40 @@ description: One-line summary. Use when <trigger condition>.
 
 When a skill exceeds 500 lines or handles multiple workflows, split detailed content into `references/` with prefix-based naming (`action-`, `mode-`, `guide-`, `constraint-`).
 
-## Scripts Over Logic
+## Scripts
 
-Put rigid, repeatable logic in scripts — not in the agent's reasoning. The skill orchestrates; scripts execute. All scripts use Python for cross-platform compatibility.
+Put rigid, repeatable logic in scripts rather than in SKILL.md instructions. The skill orchestrates; scripts execute. All scripts use Python for cross-platform compatibility.
+
+## Contribution Scope
+
+Welcomed without prior discussion:
+
+- New skills following the structure above
+- Bug fixes in existing skills
+- Documentation improvements
+
+Requires prior discussion via issue:
+
+- Major restructuring
+- Changes to core conventions
+- New dependencies or tools
+
+## Issue Reporting
+
+Use GitHub issues for bugs and feature requests. Include the following:
+
+- Bug reports: steps to reproduce, expected behaviour, actual behaviour
+- Feature requests: the problem it solves, proposed approach, affected skills
+
+## PR Review
+
+PRs are checked against the following before merge:
+
+- Frontmatter has valid `name` and `description`
+- SKILL.md stays under 5000 tokens
+- Format matches conventions (no emojis, bold, italics, or HTML)
+- Scripts use Python
+- Commit messages follow Conventional Commits
 
 ## Commit Convention
 
@@ -59,3 +92,7 @@ Use [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/
 2. Create a feature branch
 3. Commit with conventional messages
 4. Open a PR to `master`
+
+## License
+
+All contributions are submitted under the MIT license.
