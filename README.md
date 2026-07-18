@@ -1,8 +1,8 @@
 # ly-agent-skills
 
-A curated collection of agent skills, designed and developed using [Crush](https://github.com/charmbracelet/crush) and Qwen3.6 27B.
+A curated collection of agent skills, designed and developed using [Crush](https://github.com/charmbracelet/crush) and [Qwen3.6 27B](https://huggingface.co/Qwen/Qwen3.6-27B).
 
-> **NOTE**: GitHub and GitLab are public mirrors, every change is force-pushed here.
+#### GitHub and GitLab ARE MIRRORS — changes are force-pushed
 
 ## Skills
 
@@ -16,7 +16,7 @@ A curated collection of agent skills, designed and developed using [Crush](https
 
 These skills are built to be lean, fast, and reliable. Every design decision serves one goal: make agents better at their jobs.
 
-### Keep SKILL.md Lean
+### Lean SKILL.md
 
 The SKILL.md body is the agent's working memory — kept under 5000 tokens so the model can hold all instructions in context. Heavy content lives in `references/`, `templates/`, `scripts/`, and `assets/` subdirectories, loaded progressively at runtime.
 
