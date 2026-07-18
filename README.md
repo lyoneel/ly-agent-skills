@@ -7,6 +7,7 @@ A curated collection of agent skills, designed and developed using [Crush](https
 ## Skills
 
 - [Agent Loader](agent/README.md) — load custom agent definitions as system prompt overrides (archived, Windsurf-era)
+- [Agents MD Sync](agents-md-sync/README.md) — audit AGENTS.md files for duplication and correct placement
 - [AUR Package Analysis](aur-pkg-analysis/README.md) — clean up AUR packages by finding official alternatives and removal commands
 - [Crush Session](crush-session/README.md) — manage Crush CLI conversation sessions
 - [Gen Agent](gen-agent/README.md) — scaffold new agent definition files with proper structure (archived, legacy, companion of agent-loader)
