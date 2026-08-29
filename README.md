@@ -27,8 +27,6 @@ Extended definitions live under \`references\` and are loaded on demand.
 
 See [CONTRIBUTING](CONTRIBUTING.md) for full directory structure and naming conventions.
 
-See [CONTRIBUTING](CONTRIBUTING.md) for the full directory structure and naming conventions.
-
 ### Scripts
 
 Rigid, repeatable logic belongs in a script, not in the agent's reasoning. Scripts parse, validate, and compute — the skill orchestrates. See [CONTRIBUTING](CONTRIBUTING.md) for details.
