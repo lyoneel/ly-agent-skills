@@ -1,8 +1,10 @@
 # ly-agent-skills
 
-A curated collection of agent skills, designed and developed using [Crush](https://github.com/charmbracelet/crush) and [Qwen3.6 27B](https://huggingface.co/Qwen/Qwen3.6-27B).
+A curated collection of agent skills, designed and developed using [Crush](https://github.com/charmbracelet/crush) and Qwen/DeepSeek models, targeting the 27B Qwen localhosted models.
 
-#### GitHub and GitLab ARE MIRRORS — changes are force-pushed
+> **Main repository**: https://gitlab.com/lyoneel/ly-agent-skills.
+> If you are reading this on any other host, it is a mirror. Please
+> open issues and merge requests on GitLab.
 
 ## Skills
 
@@ -39,6 +41,15 @@ All skills use the `todos` tool to track progress. Todos are initialized at the 
 
 Markdown instructions go straight to the point, no fluff, no prose, just direct
 language optimized for agents.
+
+## Harness Compatibility
+
+These skills are designed for Crush, and some of their tools carry over to
+other harnesses. The `todos` task tracking is compatible with Codex
+CLI/ChatGPT. Other harnesses may work by coincidence but are not targeted:
+Claude uses its own `tasklists` tool, which may function but is not
+correctly defined for these skills. Compatibility with any other harness is
+untested and not guaranteed.
 
 ## Contributing
 
