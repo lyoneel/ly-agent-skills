@@ -8,13 +8,33 @@ A curated collection of agent skills, designed and developed using [Crush](https
 
 ## Skills
 
-- [Agent Loader](agent/README.md) — load custom agent definitions as system prompt overrides (archived, Windsurf-era)
-- [Agents MD Sync](agents-md-sync/README.md) — audit AGENTS.md files for duplication and correct placement
-- [AUR Package Analysis](aur-pkg-analysis/README.md) — clean up AUR packages by finding official alternatives and removal commands
-- [Crush Session](crush-session/README.md) — manage Crush CLI conversation sessions
-- [Gen Agent](gen-agent/README.md) — scaffold new agent definition files with proper structure (archived, legacy, companion of agent-loader)
-- [Git-Aware File Move](git-aware-mv/README.md) — move files with git history preservation
-- [Telegram Notify](tg-notify/README.md) — send messages to Telegram via the Bot API
+### agent
+
+[Agent Loader](agent/README.md) — load custom agent definitions as system prompt overrides (archived, Windsurf-era)
+
+### agents-md-sync
+
+[Agents MD Sync](agents-md-sync/README.md) — audit AGENTS.md files for duplication and correct placement
+
+### aur-pkg-analysis
+
+[AUR Package Analysis](aur-pkg-analysis/README.md) — clean up AUR packages by finding official alternatives and removal commands
+
+### crush-session
+
+[Crush Session](crush-session/README.md) — manage Crush CLI conversation sessions
+
+### gen-agent
+
+[Gen Agent](gen-agent/README.md) — scaffold new agent definition files with proper structure (archived, legacy, companion of agent-loader)
+
+### git-aware-mv
+
+[Git-Aware File Move](git-aware-mv/README.md) — move files with git history preservation
+
+### tg-notify
+
+[Telegram Notify](tg-notify/README.md) — send messages to Telegram via the Bot API
 
 ## Philosophy
 
