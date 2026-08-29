@@ -18,11 +18,15 @@ skill-name/
   assets/        # static data, images, lookup tables
 ```
 
-Current skills: `agent`, `aur-pkg-analysis`, `gen-agent`, `git-aware-mv`.
+The skill inventory lives in the README.md Skills section; keep it current
+when adding or removing a skill.
 
 ## Key Conventions
 
 - Paths always relative.
+- Skill format and contribution rules: see CONTRIBUTING.md (frontmatter
+  shape, sub-5000-token SKILL.md body, no markup in skill markdown, Python
+  for scripts, Conventional Commits).
 
 ## Git & Branching
 

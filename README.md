@@ -20,7 +20,10 @@ These skills are built to be lean, fast, and reliable. Every design decision ser
 
 ### Lean SKILL.md
 
-The SKILL.md body is the agent's working memory — kept under 5000 tokens so the model can hold all instructions in context. Heavy content lives in `references/`, `templates/`, `scripts/`, and `assets/` subdirectories, loaded progressively at runtime.
+Only essential agent configuration lives here - keep it minimal and focused.
+Extended definitions live under \`references\` and are loaded on demand.
+
+See [CONTRIBUTING](CONTRIBUTING.md) for full directory structure and naming conventions.
 
 See [CONTRIBUTING](CONTRIBUTING.md) for the full directory structure and naming conventions.
 
@@ -43,4 +46,8 @@ Contributions are welcome via PR, but not guaranteed to be accepted. See [CONTRI
 
 ## License
 
-MIT
+
+
+## Resources
+For reference, see the Crush configuration and agent skill specifications at [Crush config](https://github.com/charmbracelet/crush#agent-skills) and [Agent Skills home](https://agentskills.io/home).
+
