@@ -21,6 +21,36 @@ skill-name/
 The skill inventory lives in the README.md Skills section; keep it current
 when adding or removing a skill.
 
+### README Skills Section Format
+
+The Skills section consists of a summary table followed by one overview
+section per skill.
+
+Summary table (directly under `## Skills`):
+
+- Three columns: `Skill`, `Description`, `README`.
+- Skill column: the folder name, linked to the skill's detail anchor
+  (`[<folder-name>](#<folder-name>---<display-name>)`).
+- Description column: a one-line, very brief statement of what the skill
+  does.
+- README column: a single link whose visible text is `DOC`, wrapped in
+  literal square brackets with a space inside each bracket, pointing to the
+  skill's README: `[ [DOC](<folder-name>/README.md) ]`.
+
+Detail sections (one per skill, after the table):
+
+- Heading is the folder name followed by the display name in brackets:
+  `### <folder-name> - [<Display Name>]`.
+- Body is a short overview paragraph summarizing the skill; it is not a
+  copy of the skill's full README content.
+- After the overview paragraph, add two links on one line:
+  - an up link back to the summary table, with visible brackets and
+    spaces: `[ [UP to skills table](#skills-table) ]`;
+  - a more-info link to the skill's own README, with visible brackets and
+    spaces: `[ [More info in README](<folder-name>/README.md) ]`.
+  The table carries an anchor `#skills-table` placed directly under the
+  `## Skills` heading.
+
 ## Key Conventions
 
 - Paths always relative.
