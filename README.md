@@ -10,9 +10,10 @@ A curated collection of agent skills, designed and developed using [Crush](https
 
 These skills are built to be lean, fast, and reliable. Every design decision serves one goal: make agents better at their jobs.
 
-- Lean SKILL.md — only essential agent configuration lives here; extended definitions live under `references/` and are loaded on demand
-- Scripts — rigid, repeatable logic belongs in a script, not in the agent's reasoning; all scripts are Python for cross-platform compatibility
+- Lean SKILL.md — only essential agent configuration lives here
+- Lazy loading — detailed guides and workflows live in `references/` and are loaded on demand, keeping them out of the context window until needed
 - Split when needed — skills over 500 lines or handling multiple workflows split details into `references/`
+- Scripts — rigid, repeatable logic belongs in a script, not in the agent's reasoning; all scripts are Python for cross-platform compatibility
 - Track progress — all skills use the `todos` tool, initialized at start and cleared on finish
 - No fluff — markdown instructions go straight to the point, optimized for agents
 
@@ -24,60 +25,60 @@ See [CONTRIBUTING](CONTRIBUTING.md) for full directory structure and naming conv
 
 | Skill | Description | README |
 |-------|-------------|--------|
-| [agent](#agent---agent-loader) | Load and activate custom agent definitions as system prompt overrides (archived, Windsurf-era). | [ [DOC](agent/README.md) ] |
-| [agents-md-sync](#agents-md-sync---agents-md-sync) | Audit AGENTS.md files for duplication and correct placement. | [ [DOC](agents-md-sync/README.md) ] |
-| [aur-pkg-analysis](#aur-pkg-analysis---aur-package-analysis) | Clean up AUR packages by finding official alternatives and removal commands. | [ [DOC](aur-pkg-analysis/README.md) ] |
-| [crush-session](#crush-session---crush-session) | Manage Crush CLI conversation sessions: rename, list, inspect, delete. | [ [DOC](crush-session/README.md) ] |
-| [gen-agent](#gen-agent---gen-agent) | Scaffold agent definition files with proper structure (archived, legacy). | [ [DOC](gen-agent/README.md) ] |
-| [git-aware-mv](#git-aware-mv---git-aware-file-move) | Move files with git history preserved automatically. | [ [DOC](git-aware-mv/README.md) ] |
-| [tg-notify](#tg-notify---tg-notify-cli-reference) | Reference for the tg-notify CLI: messages, files, albums, config. | [ [DOC](tg-notify/README.md) ] |
-| [tg-notipy](#tg-notipy---telegram-notify) | Send Telegram messages, files, and albums via the Bot API. | [ [DOC](tg-notipy/README.md) ] |
+| [agent](#agent-loader---agent) | Load and activate custom agent definitions (archived). | [ [DOC](agent/README.md) ] |
+| [agents-md-sync](#agents-md-sync---agents-md-sync) | Audit AGENTS.md files for duplication and placement. | [ [DOC](agents-md-sync/README.md) ] |
+| [aur-pkg-analysis](#aur-package-analysis---aur-pkg-analysis) | Clean up AUR packages with alternatives and removal commands. | [ [DOC](aur-pkg-analysis/README.md) ] |
+| [crush-session](#crush-session---crush-session) | Manage Crush CLI conversation sessions. | [ [DOC](crush-session/README.md) ] |
+| [gen-agent](#gen-agent---gen-agent) | Scaffold agent definition files (legacy, archived). | [ [DOC](gen-agent/README.md) ] |
+| [git-aware-mv](#git-aware-file-move---git-aware-mv) | Move files while preserving git history. | [ [DOC](git-aware-mv/README.md) ] |
+| [tg-notify](#telegram-bot-notifications-cli---tg-notify) | Send telegram messages using [command line tool written in Go](https://gitlab.com/lyoneel/cli-tg-notify), using Bot API. | [ [DOC](tg-notify/README.md) ] |
+| [tg-notipy](#telegram-bot-notifications-python---tg-notipy) | Send telegram messages using a script written in Python, no dependencies, using Bot API. | [ [DOC](tg-notipy/README.md) ] |
 
-### agent - [Agent Loader]
+### Agent Loader - [agent]
 
-Loads and activates a custom agent definition from the `agents` folder as a system prompt override for the session. Originally built for Windsurf, it works in Crush too but was never adapted for it. Kept as an archived reference with one example agent.
+A skill for loading custom agent definitions and activating them as system prompt overrides. Originally designed for Windsurf, it lets you define specialized agent personas in Markdown files and activate them as system prompt overrides for the current session. It can be used in Crush as well, though it was never adapted specifically for it.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](agent/README.md) ]
 
-### agents-md-sync - [Agents MD Sync]
+### Agents MD Sync - [agents-md-sync]
 
-Runs a three-step audit of AGENTS.md files. It promotes global instructions to user level, detects overlaps between levels, and finds duplicates already defined by enforced skills. Output is suggestions only. The user decides every change.
+Audits AGENTS.md files across user-level and project-level to find duplication and misplaced instructions, and reports recommendations for moving them to the right place. It detects three drift patterns: global instructions stuck in project files, overlaps between the two levels, and instructions already covered by enforced skills. All output is suggestions only; the user decides every change.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](agents-md-sync/README.md) ]
 
-### aur-pkg-analysis - [AUR Package Analysis]
+### AUR Package Analysis - [aur-pkg-analysis]
 
-Walks through every installed AUR package one by one. For each package it reports what it does, what depends on it, whether an official alternative exists (Flatpak, official repo, pip, Go, Cargo), whether upstream is maintained, and how to remove it. For periodic system cleanup.
+A skill for cleaning up AUR packages on Arch Linux. It walks every installed AUR package one by one and reports what each one does, what depends on it, whether an official alternative exists, and how to remove it. It is meant for periodic system cleanup.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](aur-pkg-analysis/README.md) ]
 
-### crush-session - [Crush Session]
+### Crush Session - [crush-session]
 
-Wraps the `crush session` CLI to get the current session ID, rename conversations, list all sessions, inspect details, and delete sessions by ID. Supports JSON output for machine-readable results.
+Manages Crush CLI conversation sessions. It wraps the `crush session` CLI to get the current session ID, rename conversations, list all sessions, inspect session details, and delete sessions by ID. Supports `--json` output for machine-readable results.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](crush-session/README.md) ]
 
-### gen-agent - [Gen Agent]
+### Gen Agent - [gen-agent]
 
-Scaffolds new agent definition files with the correct structure and metadata. Guides through name, purpose, constraints, category, role, mission, and output format. Legacy companion to the Agent Loader skill, kept for reference.
+A legacy skill for generating new agent definition files with proper structure and metadata. It guides you through creating specialized agent definitions step by step, then generates and validates the file.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](gen-agent/README.md) ]
 
-### git-aware-mv - [Git-Aware File Move]
+### Git-Aware File Move - [git-aware-mv]
 
-Moves files so history is preserved. Uses `git mv` for tracked files and regular `mv` for untracked ones. Includes a Python script with dry-run, verbose, force-overwrite, and JSON output modes.
+A skill that automatically moves files using `git mv` for git-tracked files to preserve history, or regular `mv` for untracked files. It handles the decision logic automatically, so there is no need to check tracking status manually.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](git-aware-mv/README.md) ]
 
-### tg-notify - [tg-notify CLI Reference]
+### Telegram Bot Notifications (CLI) - [tg-notify]
 
-Serves as the reference for the tg-notify command-line tool, a Go CLI that sends Telegram messages, files, and albums. Maps user intent to a mode, loads the mode recipe and its guides, and returns a ready command with a verification probe.
+A skill for sending Telegram bot notifications through the [`tg-notify` command-line tool](https://gitlab.com/lyoneel/cli-tg-notify), a Go CLI, using Bot API. It maps user intent to one of six operations (message, file, album, discover, whoami, config), loads the matching mode recipe and its cross-reference guides, and returns a ready command with a verification probe. Use it when composing or debugging tg-notify commands, or sending messages, files, and albums from within Crush. Compared with the [Python sender](../tg-notipy/README.md), the Go CLI adds a few features: shell completion for bash, zsh, and fish, and socks5/socks5h proxy support. Where features overlap, both share the same structure and parameters, so at feature parity the two are interchangeable.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](tg-notify/README.md) ]
 
-### tg-notipy - [Telegram Notify]
+### Telegram Bot Notifications (Python) - [tg-notipy]
 
-Sends Telegram messages, files, and albums through the Bot API using a stdlib-only Python script. Mirrors the tg-notify CLI surface for the direct Bot API sender lineage.
+A skill for sending Telegram bot notifications through a self-contained Python script (`scripts/tg_notify.py`, stdlib only, no dependencies). It maps user intent to one of its operations, loads the matching mode recipe and its cross-reference guides, and runs the command with a verification probe. Use it when sending messages, files, or albums from Crush to Telegram without installing anything. It is the lighter sibling of the [Go CLI](../tg-notify/README.md): the Go version adds a few features this script lacks, namely shell completion for bash, zsh, and fish, and socks5/socks5h proxy support. Where features overlap, both share the same structure and parameters, so at feature parity the two are interchangeable.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](tg-notipy/README.md) ]
 

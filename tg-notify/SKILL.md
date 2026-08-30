@@ -1,8 +1,8 @@
 ---
 name: tg-notify
-description: "Reference for the tg-notify CLI operations: message, file, album, discover, whoami, config, proxy, dry-run, and shell completion. Use when composing or debugging tg-notify commands or sending Telegram messages, files, or albums via the tg-notify binary."
-title: tg-notify CLI Reference
-version: "20260827-1"
+description: "Send Telegram messages, files, and albums via the tg-notify command-line tool. Use when composing or debugging tg-notify commands or sending messages, files, or albums through the tg-notify binary."
+title: Telegram Bot Notifications (CLI)
+version: "20260829-2"
 deps-skills: []
 disable-model-invocation: false
 user-invocable: true
@@ -22,9 +22,9 @@ Initialize todos for tg-notify skill operation:
 ]
 ```
 
-# tg-notify CLI Reference
+# Telegram Bot Notifications (CLI)
 
-Reference for the tg-notify command-line tool, a Go CLI that sends
+Use the tg-notify command-line tool, a Go CLI that sends
 Telegram messages and files through the Bot API with a self-contained
 client. Each operation maps to a mode file in `references/modes/`.
 Operation-independent knowledge (text formatting, file types, retry

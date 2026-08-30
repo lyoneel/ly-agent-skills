@@ -42,7 +42,9 @@ The capability list, `## Prerequisites`, and `## License` are mandatory.
 `## Operations` replaces `## Features` only when the skill routes by mode;
 mode-routing skills may additionally add `## Guides`:
 
-- `## Guides` -- bullets linking to on-demand `references/` files
+- `## Guides` -- bullets linking to on-demand `references/` files; link the
+  file as a markdown hyperlink with a human-readable label, never as bare
+  inline-code paths
 
 Other sections (`## Quick Start`, `## Configuration`, `## Architecture`,
 `## Notes`, `## Technology Stack`) are allowed only when they add value to a
@@ -74,7 +76,7 @@ description: One-line summary. Use when <trigger condition>.
 
 ## Splitting Skills
 
-When a skill exceeds 500 lines or handles multiple workflows, split detailed content into `references/` with prefix-based naming (`action-`, `mode-`, `guide-`, `constraint-`).
+When a skill exceeds 500 lines or handles multiple workflows, split detailed content into `references/` with prefix-based naming (`action-`, `mode-`, `guide-`, `constraint-`). These files are loaded on demand (lazy loading): SKILL.md stays lean, pointing to the reference it needs per step, and the agent reads that file only when the step runs.
 
 ## Scripts
 

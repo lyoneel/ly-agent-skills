@@ -1,8 +1,8 @@
 ---
 name: tg-notipy
 description: Send messages, files, and albums to Telegram chats via the Bot API. Use when sending notifications, alerts, media, or albums from Crush to Telegram, discovering chat IDs, or checking bot identity.
-title: Telegram Notify
-version: "20260829-3"
+title: Telegram Bot Notifications (Python)
+version: "20260829-4"
 deps-skills: []
 disable-model-invocation: false
 user-invocable: true
@@ -24,9 +24,9 @@ Initialize todos for tg-notipy operation:
 }
 ```
 
-# Telegram Notify
+# Telegram Bot Notifications (Python)
 
-Reference for the tg-notipy CLI. One Python script
+Use the tg-notipy CLI. One Python script
 (`scripts/tg_notify.py`, stdlib only) sends messages, files, and
 albums to Telegram via the Bot API, with MarkdownV2 and HTML
 formatting, auto-retry on rate limits and transient errors, chat ID
