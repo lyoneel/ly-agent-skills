@@ -12,6 +12,11 @@ __pycache__/
 .Python
 *.egg-info/
 *.egg
+.venv/
+venv/
+
+# Local tools
+.bin/
 
 # Node
 node_modules/

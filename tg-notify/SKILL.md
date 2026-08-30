@@ -1,192 +1,136 @@
 ---
 name: tg-notify
-description: Send messages to Telegram chats via Bot API. Use when sending notifications, alerts, or messages from Crush to Telegram.
-recommended: true
+description: "Reference for the tg-notify CLI operations: message, file, album, discover, whoami, config, proxy, dry-run, and shell completion. Use when composing or debugging tg-notify commands or sending Telegram messages, files, or albums via the tg-notify binary."
+title: tg-notify CLI Reference
+version: "20260827-1"
 deps-skills: []
 disable-model-invocation: false
 user-invocable: true
-allowed-tools: ["bash"]
-kaizen:
-  sources:
-    telegram-api: https://core.telegram.org/bots/api#sendmessage
-  targets:
-    telegram-api: Monitor for API changes and new endpoints
+allowed-tools: ["bash", "glob", "grep", "view", "ls"]
+system-tools: ["tg-notify"]
 ---
 
-Initialize todos for tg-notify operation:
+Initialize todos for tg-notify skill operation:
 
 ```json
-{
-  "todos": [
-    {"content": "Initialize tg-notify operation", "status": "in_progress", "active_form": "Initializing tg-notify operation"},
-    {"content": "Verify configuration (bot token and chat ID)", "status": "pending", "active_form": "Verifying configuration"},
-    {"content": "Send message via scripts/send_message.py", "status": "pending", "active_form": "Sending message via send_message.py"},
-    {"content": "Handle response and errors", "status": "pending", "active_form": "Handling response and errors"},
-    {"content": "Complete tg-notify operation", "status": "pending", "active_form": "Completing tg-notify operation"}
-  ]
-}
+[
+  {"content": "Parse user request and detect mode", "status": "in_progress", "active_form": "Parsing user request and detecting mode"},
+  {"content": "Resolve tg-notify from PATH and compare the baseline version", "status": "pending", "active_form": "Resolving tg-notify and comparing the baseline version"},
+  {"content": "Load mode reference and cross-reference guides", "status": "pending", "active_form": "Loading mode reference and guides"},
+  {"content": "Provide command with verification probe", "status": "pending", "active_form": "Providing command"},
+  {"content": "Complete tg-notify operation", "status": "pending", "active_form": "Completing tg-notify operation"}
+]
 ```
 
-# Telegram Notify
+# tg-notify CLI Reference
 
-Send messages to Telegram via the Bot API using Python scripts. Supports MarkdownV2 and HTML formatting, auto-retry on rate limits, and chat ID discovery.
+Reference for the tg-notify command-line tool, a Go CLI that sends
+Telegram messages and files through the Bot API with a self-contained
+client. Each operation maps to a mode file in `references/modes/`.
+Operation-independent knowledge (text formatting, file types, retry
+policy, configuration) lives in `references/guide-*.md` files that
+modes load on demand. Field-verified failure modes live in
+`references/gotchas.md`.
 
-## Prerequisites
+## Tool Availability and Binary Baseline
 
-- Telegram bot created via @BotFather (bot token required)
-- Bot added to target chat (private, group, or channel)
-- `python3` available in PATH (stdlib only, no pip dependencies)
-
-## Configuration Resolution
-
-The scripts resolve configuration via a priority chain. Config files are NOT used.
-
-### scripts/send_message.py
-
-Resolves bot token and chat ID in this order:
-
-1. `--token` CLI flag (bot token override)
-2. `TELEGRAM_BOT_TOKEN` env var
-3. `--chat-id` CLI flag (chat ID override)
-4. `TELEGRAM_CHAT_ID` env var
-
-### scripts/discover_chat_id.py
-
-Resolves bot token in this order:
-
-1. Positional CLI argument
-2. `TELEGRAM_BOT_TOKEN` env var
-
-## Chat ID Discovery
-
-If you do not know your chat ID:
-
-1. Send any message to your bot on Telegram (e.g., `/start` or "test")
-2. Wait 5 seconds for Telegram to process the update
-3. Run the discovery script:
-   ```bash
-   python3 scripts/discover_chat_id.py "$TELEGRAM_BOT_TOKEN"
-   ```
-4. The output is your numeric chat ID
-5. Save it to `TELEGRAM_CHAT_ID` env var
-
-For group/channel chats, the chat ID will be a negative number (e.g., `-1001234567890`).
-
-## Execution Steps
-
-BEGIN EXECUTION IMMEDIATELY. Do not ask the user what they want to do. Start with step 1:
-
-### Step 1: Verify Configuration
-
-1. Check `TELEGRAM_BOT_TOKEN` is set in environment. If not, ask user to provide it.
-2. Check `TELEGRAM_CHAT_ID` is set in environment. If not, provide it via `--chat-id` flag.
-
-Update todos: mark configuration verification as completed, mark send message as in_progress.
-
-### Step 2: Send Message
-
-Run the script via bash:
+Resolve the binary from PATH only. The skill has no project fallback
+and never builds or installs the binary:
 
 ```bash
-python3 scripts/send_message.py \
-  --message "$MESSAGE_TEXT" \
-  --parse-mode "$PARSE_MODE"
+command -v tg-notify >/dev/null 2>&1 || { echo "MISSING: tg-notify"; exit 1; }
+tg-notify -v
 ```
 
-Script options:
+The definitions in this skill were written against tg-notify
+v1.1.20260825, the baseline version. Compare the output of
+`tg-notify -v` against the baseline. If the PATH binary is older than
+the baseline, or a documented flag fails with
+`flag provided but not defined` (G-stale), stop and suggest that the
+user update the binary, for example with
+`go install gitlab.com/lyoneel/cli-tg-notify/cmd/tg-notify@latest` or
+a fresh build from the project. Then resume.
 
-| Flag | Description | Required |
-|------|-------------|----------|
-| `--message` / `-m` | Message text (1-4096 chars) | Yes |
-| `--token` | Bot token (overrides env var) | No |
-| `--chat-id` | Chat ID (required if `TELEGRAM_CHAT_ID` not set) | No |
-| `--parse-mode` | `MarkdownV2`, `HTML`, or empty (default: plain text) | No |
-| `--no-retry` | Disable auto-retry on 429 | No |
+Read `references/gotchas.md` before executing operations.
 
-Exit codes:
-- `0` -- message sent successfully (prints `Sent (message_id: <id>)`)
-- `1` -- failed (prints error to stderr)
+## Gotchas (field-verified friction)
 
-Update todos: mark send message as completed, mark handle response as in_progress.
+G1: multi-word positional text must be quoted; unquoted words are
+rejected with a quoting hint.
+G2: flags work anywhere on the command line; arguments are reordered
+before parsing.
+G3: an empty parse mode is plain text, and plain text is the default.
+G4: the extension table is consulted before the MIME table; unknown
+types fall back to document.
+G5: a 429 retries exactly once, and that one retry still happens when
+`--retries 0` is set; transient errors retry up to 60 times by
+default; only `--no-retry` makes a send fully one-shot.
+G6: `--reply-to` and `--offset` must be non-negative, `--retries`
+must be >= 0, `--base-wait` must be > 0; mode-mismatched flags are
+rejected with an error.
+G7: exit codes are 0 for success (also `--help` and `-v`) and 1 for
+every failure, including flag misuse; there is no exit code 2.
+G8: the bot token is scrubbed from error output; request bodies are
+never logged.
+G9: with no message source, stdin on a terminal prints usage instead
+of hanging.
+G10: the `./.env` file only fills variables that are not already set;
+the real environment and flags win.
+G11: `--file`, `--url`, and `--file-id` are mutually exclusive; use
+exactly one.
+G12: `--caption` and `--message` each conflict with a positional text
+caption.
+G13: `--dry-run` never sends anything and works with `--json`.
+G14: `socks5` and `socks5h` behave identically; the hostname always
+goes to the proxy.
 
-### Step 3: Handle Response
+## Mode Detection
 
-The script handles errors internally:
+Map user intent to a mode. Load the mode file, then load the guides in
+the Guides column before composing commands.
 
-- On success: prints `Sent (message_id: <id>)` to stdout
-- On 429 rate limit: waits `retry_after` seconds, retries once automatically
-- On other errors: prints `Failed: <reason>` to stderr, exits with code 1
+| Trigger Keywords | Mode | Mode File | Guides |
+|------------------|------|-----------|--------|
+| send message, notify, alert, text, announce | Message | `references/modes/mode-message.md` | `references/guide-formatting.md` |
+| send file, upload, photo, audio, video, document, url file, file-id | File | `references/modes/mode-file.md` | `references/guide-filetypes.md` |
+| album, media group, multiple photos, gallery | Album | `references/modes/mode-album.md` | `references/guide-filetypes.md`, `references/guide-formatting.md` |
+| discover, find chat id, who is chatting | Discover | `references/modes/mode-discover.md` | `references/guide-config.md` |
+| whoami, bot identity, getme | Whoami | `references/modes/mode-whoami.md` | `references/guide-config.md` |
+| proxy, base-url, self-hosted, env, .env, completion, config | Config | `references/modes/mode-config.md` | `references/guide-config.md`, `references/guide-retry.md` |
 
-Error codes the script may report:
+## Cross-Reference Guides
 
-| Code | Meaning | Action |
-|------|---------|--------|
-| 400 | Bad Request | Check chat_id format, message length, or escape errors |
-| 401 | Unauthorized | Verify bot token is valid and not revoked |
-| 403 | Forbidden | Add bot to chat, check admin permissions for channels |
-| 404 | Not Found | Chat does not exist or bot was removed |
-| 429 | Too Many Requests | Script auto-retries once; if it fails again, wait and retry manually |
+Load a guide when its trigger matches. Guides are independent of any
+single operation:
 
-Update todos: mark handle response as completed, mark complete operation as in_progress.
+| Guide | Purpose | Load Trigger |
+|-------|---------|--------------|
+| `references/guide-formatting.md` | MarkdownV2, HTML, and plain text, escaping rules | Any formatted text or caption |
+| `references/guide-filetypes.md` | detection order, type tables, size limits, album item rules | Any file or album send |
+| `references/guide-retry.md` | 429 and transient retry policy and override flags | Any failure, timeout, or long upload |
+| `references/guide-config.md` | env vars, flag precedence, .env, proxy, base-url, exit codes, json, dry-run | Any configuration question or error diagnosis |
 
-### Step 4: Complete
+## Maintenance
 
-Confirm delivery status. If retry was needed, report the final outcome. Clear todos.
+The skill definitions follow the binary baseline version in the Tool
+Availability section. When the project CLI changes, the
+`update-tg-notify` skill, which ships with the tg-notify-cli
+repository, re-syncs this skill and bumps the baseline. This skill
+holds no path to the project.
 
-## Message Formatting
+## BEGIN EXECUTION IMMEDIATELY
 
-### MarkdownV2
+Do not ask the user what to do. Start with step 1:
 
-Use `--parse-mode MarkdownV2` for full formatting support:
+1. Detect the mode from the request using the Mode Detection table.
+2. Resolve the binary from PATH and compare `tg-notify -v` against the
+   baseline version. On a missing binary, stop with install guidance.
+   On an older binary, stop and suggest an update to the user.
+3. Load the mode file for the detected mode.
+4. Load every guide listed in the mode's Guides column.
+5. Read `references/gotchas.md` and apply every relevant entry.
+6. Compose the command from the mode recipes and run the verification
+   probe from the mode file.
 
-- Bold: `*bold*`
-- Italic: `_italic_`
-- Underline: `__underline__`
-- Strikethrough: `~strikethrough~`
-- Inline code: `` `code` ``
-- Link: `[text](URL)`
-- Blockquote: `> text`
-
-Escape special characters with backslash: `_*[]()~\>#:+-=|{}.!`
-
-### HTML
-
-Use `--parse-mode HTML` for HTML formatting:
-
-- Bold: `<b>text</b>`
-- Italic: `<i>text</i>`
-- Code: `<code>text</code>`
-- Link: `<a href="URL">text</a>`
-
-Escape `<`, `>`, `&` as `&lt;`, `&gt;`, `&amp;`.
-
-## Rate Limits
-
-- Default: 30 messages per second
-- On 429 error: script reads `retry_after` and waits before retrying
-- Maximum one automatic retry per message
-
-## Usage Examples
-
-### Basic plain text message
-
-```bash
-python3 scripts/send_message.py --message "Deployment complete"
-```
-
-### Formatted message with MarkdownV2
-
-```bash
-python3 scripts/send_message.py \
-  --parse-mode MarkdownV2 \
-  --message "*Build Success*\n\n_Pipeline_: CI/CD\n_Branch_: main\n_Commits_: 3\n_Status_: \`passed\`"
-```
-
-### Override token and chat ID via flags
-
-```bash
-python3 scripts/send_message.py \
-  --token "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11" \
-  --chat-id "987654321" \
-  --message "Override test"
-```
+> Update todos at each step. After completion, output a summary and
+> clear with `todos([])`.
