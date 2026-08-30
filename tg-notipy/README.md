@@ -1,19 +1,11 @@
-# tg-notipy
+# Telegram Notify
 
-A Crush agent skill that sends Telegram messages, files, and albums
-through the Bot API using a self-contained Python script
-(`scripts/tg_notify.py`, stdlib only). It mirrors the `tg-notify` CLI
-surface for the direct Bot API sender lineage.
-
-The skill maps user intent to a mode, loads the mode recipe and its
-cross-reference guides, and runs the matching command with a
-verification probe.
+A Crush agent skill that sends Telegram messages, files, and albums through the Bot API using a self-contained Python script (`scripts/tg_notify.py`, stdlib only). It mirrors the `tg-notify` CLI surface for the direct Bot API sender lineage, mapping user intent to a mode, loading the mode recipe and its cross-reference guides, and running the matching command with a verification probe.
 
 ## Operations
 
 - message -- send a text message or caption
-- file -- send a document, photo, audio, video, voice, animation, or
-  sticker (local file, URL, or file ID)
+- file -- send a document, photo, audio, video, voice, animation, or sticker (local file, URL, or file ID)
 - album -- send a media group
 - discover -- resolve a chat ID from the latest bot update
 - whoami -- report the bot identity

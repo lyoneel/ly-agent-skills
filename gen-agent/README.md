@@ -1,15 +1,21 @@
-# Gen Agent (Archived)
+# Gen Agent
 
-*Legacy skill — kept for reference only.*
+A legacy skill for generating new agent definition files with proper structure and metadata. It guides you through creating specialized agent definitions step by step, then generates and validates the file.
 
-A skill for generating new agent definition files with proper structure and metadata.
+## Features
 
-Guides you through creating specialized agent definitions step by step:
+- Gathers name, purpose, and constraints interactively
+- Determines the agent category (coder, writer, meta, expert)
+- Structures the agent with role, mission, constraints, and output format
+- Generates the agent file at `agents/{agent-name}.md`
+- Validates completeness and clarity
 
-- Gather agent name, purpose, and constraints
-- Determine agent category (coder, writer, meta, expert)
-- Structure the agent with role, mission, constraints, and output format
-- Generate the agent file at `agents/{agent-name}.md`
-- Validate completeness and clarity
+## Prerequisites
 
-Useful when scaffolding new agents for the Agent Loader skill or creating standalone agent definitions.
+- None beyond a standard agent runtime
+
+## License
+
+See the project root LICENSE.
+
+This skill is kept here as an archived reference.
