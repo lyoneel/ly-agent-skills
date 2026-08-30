@@ -28,6 +28,7 @@ See [CONTRIBUTING](CONTRIBUTING.md) for full directory structure and naming conv
 | [agent](#agent-loader---agent) | Load and activate custom agent definitions (archived). | [ [DOC](agent/README.md) ] |
 | [agents-md-sync](#agents-md-sync---agents-md-sync) | Audit AGENTS.md files for duplication and placement. | [ [DOC](agents-md-sync/README.md) ] |
 | [aur-pkg-analysis](#aur-package-analysis---aur-pkg-analysis) | Clean up AUR packages with alternatives and removal commands. | [ [DOC](aur-pkg-analysis/README.md) ] |
+| [commit](#git-commit-executor---commit) | Commit files with explicit staging and conventional message generation. | [ [DOC](commit/README.md) ] |
 | [crush-session](#crush-session---crush-session) | Manage Crush CLI conversation sessions. | [ [DOC](crush-session/README.md) ] |
 | [gen-agent](#gen-agent---gen-agent) | Scaffold agent definition files (legacy, archived). | [ [DOC](gen-agent/README.md) ] |
 | [git-aware-mv](#git-aware-file-move---git-aware-mv) | Move files while preserving git history. | [ [DOC](git-aware-mv/README.md) ] |
@@ -51,6 +52,12 @@ Audits AGENTS.md files across user-level and project-level to find duplication a
 A skill for cleaning up AUR packages on Arch Linux. It walks every installed AUR package one by one and reports what each one does, what depends on it, whether an official alternative exists, and how to remove it. It is meant for periodic system cleanup.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](aur-pkg-analysis/README.md) ]
+
+### Git Commit Executor - [commit]
+
+A skill for executing git commits with explicit file control and conventional commit message generation. Files are staged one at a time and the executor verifies the staged set equals the explicit list before committing, so out-of-scope work never slips into a commit. It supports scoped resolution (staged, all, unpushed, from a commit ref, a whole skill folder, or a directory), repeatable exclusions, mandatory logical-commit splitting, message-only generation, dry-run, and an optional push after the commit.
+
+[ [UP to skills table](#skills-table) ] [ [More info in README](commit/README.md) ]
 
 ### Crush Session - [crush-session]
 
