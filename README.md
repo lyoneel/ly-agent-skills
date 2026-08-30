@@ -34,7 +34,7 @@ A curated collection of agent skills, designed and developed using [Crush](https
 
 ### tg-notify
 
-[Telegram Notify](tg-notify/README.md) — send messages to Telegram via the Bot API
+[tg-notify CLI Reference](tg-notify/README.md) — reference for the tg-notify CLI: messages, files, albums, and configuration
 
 ## Philosophy
 
