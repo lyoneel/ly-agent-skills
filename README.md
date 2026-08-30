@@ -36,6 +36,10 @@ A curated collection of agent skills, designed and developed using [Crush](https
 
 [tg-notify CLI Reference](tg-notify/README.md) — reference for the tg-notify CLI: messages, files, albums, and configuration
 
+### tg-notipy
+
+[Telegram Notify](tg-notipy/README.md) — send messages, files, and albums to Telegram via the Bot API with a stdlib-only Python script
+
 ## Philosophy
 
 These skills are built to be lean, fast, and reliable. Every design decision serves one goal: make agents better at their jobs.
