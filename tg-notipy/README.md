@@ -1,6 +1,6 @@
-# Telegram Notify
+# Telegram Bot Notifications (Python)
 
-A Crush agent skill that sends Telegram messages, files, and albums through the Bot API using a self-contained Python script (`scripts/tg_notify.py`, stdlib only). It mirrors the `tg-notify` CLI surface for the direct Bot API sender lineage, mapping user intent to a mode, loading the mode recipe and its cross-reference guides, and running the matching command with a verification probe.
+A skill for sending Telegram bot notifications through a self-contained Python script (`scripts/tg_notify.py`, stdlib only, no dependencies). It maps user intent to one of its operations, loads the matching mode recipe and its cross-reference guides, and runs the command with a verification probe. Use it when sending messages, files, or albums from Crush to Telegram without installing anything. It is the lighter sibling of the [Go CLI](../tg-notify/README.md): the Go version adds a few features this script lacks, namely shell completion for bash, zsh, and fish, and socks5/socks5h proxy support. Where features overlap, both share the same structure and parameters, so at feature parity the two are interchangeable.
 
 ## Operations
 
@@ -14,11 +14,11 @@ A Crush agent skill that sends Telegram messages, files, and albums through the 
 
 Operation-independent knowledge is split into guides loaded on demand:
 
-- `references/guide-formatting.md` -- MarkdownV2, HTML, plain text, escaping rules
-- `references/guide-filetypes.md` -- detection order, type tables, size limits, album item rules
-- `references/guide-retry.md` -- 429 and transient retry policy and override flags
-- `references/guide-config.md` -- env vars, flag precedence, `.env`, proxy, base-url, exit codes, JSON, dry-run
-- `references/gotchas.md` -- field-verified failure modes
+- [Formatting](references/guide-formatting.md) -- MarkdownV2, HTML, plain text, escaping rules
+- [File types](references/guide-filetypes.md) -- detection order, type tables, size limits, album item rules
+- [Retry](references/guide-retry.md) -- 429 and transient retry policy and override flags
+- [Configuration](references/guide-config.md) -- env vars, flag precedence, `.env`, proxy, base-url, exit codes, JSON, dry-run
+- [Gotchas](references/gotchas.md) -- field-verified failure modes
 
 ## Prerequisites
 

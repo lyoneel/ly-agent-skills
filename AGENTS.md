@@ -30,17 +30,22 @@ Summary table (directly under `## Skills`):
 
 - Three columns: `Skill`, `Description`, `README`.
 - Skill column: the folder name, linked to the skill's detail anchor
-  (`[<folder-name>](#<folder-name>---<display-name>)`).
+  (`[<folder-name>](#<display-name>---<folder-name>)`).
 - Description column: a one-line, very brief statement of what the skill
-  does.
+  does; a short fragment, not the overview paragraph. It may carry inline
+  links to a skill's upstream repo. Keep it terse.
+- Where a skill's overview paragraph is a single terse sentence, that same
+  sentence is reused verbatim as the description; otherwise the description
+  is distilled from the capability list, never copied from a longer
+  overview paragraph.
 - README column: a single link whose visible text is `DOC`, wrapped in
   literal square brackets with a space inside each bracket, pointing to the
   skill's README: `[ [DOC](<folder-name>/README.md) ]`.
 
 Detail sections (one per skill, after the table):
 
-- Heading is the folder name followed by the display name in brackets:
-  `### <folder-name> - [<Display Name>]`.
+- Heading is the display name followed by the folder name in brackets:
+  `### <Display Name> - [<folder-name>]`.
 - Body is the skill's overview paragraph, copied verbatim from the opening
   paragraph of its OWN README.md (the single source of truth). It is not a
   new summary and not the skill's full README content.
