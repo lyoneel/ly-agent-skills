@@ -6,6 +6,18 @@ A curated collection of agent skills, designed and developed using [Crush](https
 > If you are reading this on any other host, it is a mirror. Please
 > open issues and merge requests on GitLab.
 
+## Philosophy
+
+These skills are built to be lean, fast, and reliable. Every design decision serves one goal: make agents better at their jobs.
+
+- Lean SKILL.md — only essential agent configuration lives here; extended definitions live under `references/` and are loaded on demand
+- Scripts — rigid, repeatable logic belongs in a script, not in the agent's reasoning; all scripts are Python for cross-platform compatibility
+- Split when needed — skills over 500 lines or handling multiple workflows split details into `references/`
+- Track progress — all skills use the `todos` tool, initialized at start and cleared on finish
+- No fluff — markdown instructions go straight to the point, optimized for agents
+
+See [CONTRIBUTING](CONTRIBUTING.md) for full directory structure and naming conventions.
+
 ## Skills
 
 <a id="skills-table"></a>
@@ -68,30 +80,6 @@ Serves as the reference for the tg-notify command-line tool, a Go CLI that sends
 Sends Telegram messages, files, and albums through the Bot API using a stdlib-only Python script. Mirrors the tg-notify CLI surface for the direct Bot API sender lineage.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](tg-notipy/README.md) ]
-
-## Philosophy
-
-These skills are built to be lean, fast, and reliable. Every design decision serves one goal: make agents better at their jobs.
-
-### Lean SKILL.md
-
-Only essential agent configuration lives here - keep it minimal and focused.
-Extended definitions live under \`references\` and are loaded on demand.
-
-See [CONTRIBUTING](CONTRIBUTING.md) for full directory structure and naming conventions.
-
-### Scripts
-
-Rigid, repeatable logic belongs in a script, not in the agent's reasoning. Scripts parse, validate, and compute — the skill orchestrates. See [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Track Progress
-
-All skills use the `todos` tool to track progress. Todos are initialized at the start, updated as each step completes, and cleared on finish.
-
-### No Fluff
-
-Markdown instructions go straight to the point, no fluff, no prose, just direct
-language optimized for agents.
 
 ## Harness Compatibility
 
