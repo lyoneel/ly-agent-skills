@@ -16,6 +16,41 @@ skill-name/
   assets/        # static data, images, lookup tables
 ```
 
+## README.md Format
+
+Each skill ships a README.md as its public-facing summary, read by humans
+and mirrors rather than loaded at runtime. It must not duplicate SKILL.md
+or references content.
+
+Every skill README has this shape, in order:
+
+- H1 title (the skill's display name)
+- One overview paragraph directly under the H1, no section heading. It
+  explains what the skill does, the problem it solves, and when to use it.
+  Written as a single, well-formed paragraph, not a features dump.
+- A capability list: `## Features` (bullets of what the skill can do), or
+  `## Operations` for mode-routing skills (bullets of its modes/commands)
+- `## Prerequisites` -- what must exist before the skill runs
+- `## License` -- "See the project root LICENSE."
+
+The overview paragraph is the single source of truth for the main README:
+it is copied verbatim into that skill's detail (overview) section under the
+summary table, never into the table row. When the paragraph changes, update
+the main README copy to stay in sync.
+
+The capability list, `## Prerequisites`, and `## License` are mandatory.
+`## Operations` replaces `## Features` only when the skill routes by mode;
+mode-routing skills may additionally add `## Guides`:
+
+- `## Guides` -- bullets linking to on-demand `references/` files
+
+Other sections (`## Quick Start`, `## Configuration`, `## Architecture`,
+`## Notes`, `## Technology Stack`) are allowed only when they add value to a
+human reader without repeating SKILL.md or references content.
+
+Formatting: no HTML or emojis, code blocks always specify a language,
+paths relative.
+
 ## SKILL.md Format
 
 - YAML frontmatter with `name` and `description`

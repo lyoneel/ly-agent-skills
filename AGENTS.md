@@ -41,8 +41,9 @@ Detail sections (one per skill, after the table):
 
 - Heading is the folder name followed by the display name in brackets:
   `### <folder-name> - [<Display Name>]`.
-- Body is a short overview paragraph summarizing the skill; it is not a
-  copy of the skill's full README content.
+- Body is the skill's overview paragraph, copied verbatim from the opening
+  paragraph of its OWN README.md (the single source of truth). It is not a
+  new summary and not the skill's full README content.
 - After the overview paragraph, add two links on one line:
   - an up link back to the summary table, with visible brackets and
     spaces: `[ [UP to skills table](#skills-table) ]`;
