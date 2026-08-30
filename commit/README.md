@@ -1,6 +1,6 @@
 # Git Commit Executor
 
-A skill that executes git commits with explicit file control and [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) message generation. Nothing reaches a commit unless you named it, and nothing else can slip in behind your back.
+A skill that executes git commits with explicit file control and [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/#specification) message generation. Nothing reaches a commit unless you named it, and nothing else can slip in behind your back.
 
 ## Features
 

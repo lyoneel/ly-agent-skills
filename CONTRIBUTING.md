@@ -115,7 +115,7 @@ PRs are checked against the following before merge:
 
 ## Commit Convention
 
-Use [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/):
+Use [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/#specification):
 
 - `feat:` new skill or feature
 - `fix:` bug fix

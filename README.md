@@ -28,7 +28,7 @@ See [CONTRIBUTING](CONTRIBUTING.md) for full directory structure and naming conv
 | [agent](#agent-loader---agent) | Load and activate custom agent definitions (archived). | [ [DOC](agent/README.md) ] |
 | [agents-md-sync](#agents-md-sync---agents-md-sync) | Audit AGENTS.md files for duplication and placement. | [ [DOC](agents-md-sync/README.md) ] |
 | [aur-pkg-analysis](#aur-package-analysis---aur-pkg-analysis) | Clean up AUR packages with alternatives and removal commands. | [ [DOC](aur-pkg-analysis/README.md) ] |
-| [commit](#git-commit-executor---commit) | Commit files with explicit staging and conventional message generation. | [ [DOC](commit/README.md) ] |
+| [commit](#git-commit-executor---commit) | Commit files with explicit staging and [conventional](https://www.conventionalcommits.org/en/v1.0.0/#specification) message generation. | [ [DOC](commit/README.md) ] |
 | [crush-session](#crush-session---crush-session) | Manage Crush CLI conversation sessions. | [ [DOC](crush-session/README.md) ] |
 | [gen-agent](#gen-agent---gen-agent) | Scaffold agent definition files (legacy, archived). | [ [DOC](gen-agent/README.md) ] |
 | [git-aware-mv](#git-aware-file-move---git-aware-mv) | Move files while preserving git history. | [ [DOC](git-aware-mv/README.md) ] |
@@ -55,7 +55,7 @@ A skill for cleaning up AUR packages on Arch Linux. It walks every installed AUR
 
 ### Git Commit Executor - [commit]
 
-A skill for executing git commits with explicit file control and conventional commit message generation. Files are staged one at a time and the executor verifies the staged set equals the explicit list before committing, so out-of-scope work never slips into a commit. It supports scoped resolution (staged, all, unpushed, from a commit ref, a whole skill folder, or a directory), repeatable exclusions, mandatory logical-commit splitting, message-only generation, dry-run, and an optional push after the commit.
+A skill for executing git commits with explicit file control and [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/#specification) message generation. Files are staged one at a time and the executor verifies the staged set equals the explicit list before committing, so out-of-scope work never slips into a commit. It supports scoped resolution (staged, all, unpushed, from a commit ref, a whole skill folder, or a directory), repeatable exclusions, mandatory logical-commit splitting, message-only generation, dry-run, and an optional push after the commit.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](commit/README.md) ]
 
@@ -79,13 +79,13 @@ A skill that automatically moves files using `git mv` for git-tracked files to p
 
 ### Telegram Bot Notifications (CLI) - [tg-notify]
 
-A skill for sending Telegram bot notifications through the [`tg-notify` command-line tool](https://gitlab.com/lyoneel/cli-tg-notify), a Go CLI, using Bot API. It maps user intent to one of six operations (message, file, album, discover, whoami, config), loads the matching mode recipe and its cross-reference guides, and returns a ready command with a verification probe. Use it when composing or debugging tg-notify commands, or sending messages, files, and albums from within Crush. Compared with the [Python sender](../tg-notipy/README.md), the Go CLI adds a few features: shell completion for bash, zsh, and fish, and socks5/socks5h proxy support. Where features overlap, both share the same structure and parameters, so at feature parity the two are interchangeable.
+A skill for sending Telegram bot notifications through the [`tg-notify` command-line tool](https://gitlab.com/lyoneel/cli-tg-notify), a Go CLI, using Bot API. It maps user intent to one of six operations (message, file, album, discover, whoami, config), loads the matching mode recipe and its cross-reference guides, and returns a ready command with a verification probe. Use it when composing or debugging tg-notify commands, or sending messages, files, and albums from within Crush. Compared with the [Python sender](#telegram-bot-notifications-python---tg-notipy), the Go CLI adds a few features: shell completion for bash, zsh, and fish, and socks5/socks5h proxy support. Where features overlap, both share the same structure and parameters, so at feature parity the two are interchangeable.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](tg-notify/README.md) ]
 
 ### Telegram Bot Notifications (Python) - [tg-notipy]
 
-A skill for sending Telegram bot notifications through a self-contained Python script (`scripts/tg_notify.py`, stdlib only, no dependencies). It maps user intent to one of its operations, loads the matching mode recipe and its cross-reference guides, and runs the command with a verification probe. Use it when sending messages, files, or albums from Crush to Telegram without installing anything. It is the lighter sibling of the [Go CLI](../tg-notify/README.md): the Go version adds a few features this script lacks, namely shell completion for bash, zsh, and fish, and socks5/socks5h proxy support. Where features overlap, both share the same structure and parameters, so at feature parity the two are interchangeable.
+A skill for sending Telegram bot notifications through a self-contained Python script (`scripts/tg_notify.py`, stdlib only, no dependencies). It maps user intent to one of its operations, loads the matching mode recipe and its cross-reference guides, and runs the command with a verification probe. Use it when sending messages, files, or albums from Crush to Telegram without installing anything. It is the lighter sibling of the [Go CLI](#telegram-bot-notifications-cli---tg-notify): the Go version adds a few features this script lacks, namely shell completion for bash, zsh, and fish, and socks5/socks5h proxy support. Where features overlap, both share the same structure and parameters, so at feature parity the two are interchangeable.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](tg-notipy/README.md) ]
 
