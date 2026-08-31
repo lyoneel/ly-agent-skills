@@ -1,6 +1,6 @@
 # ly-agent-skills
 
-A curated collection of agent skills, designed and developed using [Crush](https://github.com/charmbracelet/crush) and Qwen/DeepSeek models, targeting the 27B Qwen localhosted models.
+A growing collection of agent skills built with [Crush](https://github.com/charmbracelet/crush), each one developed and hardened against the models that actually run on the machines they serve. The roster spans different locally hosted model families (Qwen, DeepSeek), from the Qwen 27B class down to other mid-sized models that fit on a single GPU. A skill earns its place here only after it proves itself under those constraints: if it works where these models run, it works anywhere.
 
 > **Main repository**: https://gitlab.com/lyoneel/ly-agent-skills.
 > If you are reading this on any other host, it is a mirror. Please
