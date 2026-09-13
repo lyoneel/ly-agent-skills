@@ -18,3 +18,6 @@ Thumbs.db
 
 # Generated artifacts
 RELEASE_SUMMARY.md
+
+# Agent tooling
+.playwright-mcp/
