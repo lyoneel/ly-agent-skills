@@ -32,7 +32,7 @@ See [CONTRIBUTING](CONTRIBUTING.md) for full directory structure and naming conv
 | [crush-session](#crush-session---crush-session) | Manage Crush CLI conversation sessions. | [ [DOC](crush-session/README.md) ] |
 | [gen-agent](#gen-agent---gen-agent) | Scaffold agent definition files (legacy, archived). | [ [DOC](gen-agent/README.md) ] |
 | [git-aware-mv](#git-aware-file-move---git-aware-mv) | Move files while preserving git history. | [ [DOC](git-aware-mv/README.md) ] |
-| [tg-notify](#telegram-bot-notifications-cli---tg-notify) | Send telegram messages using [command line tool written in Go](https://gitlab.com/lyoneel/cli-tg-notify), using Bot API. | [ [DOC](tg-notify/README.md) ] |
+| [tg-notify](#telegram-bot-notifications-cli---tg-notify) | Send telegram messages using [command line tool written in Go](https://gitlab.com/lyoneel/tg-notify), using Bot API. | [ [DOC](tg-notify/README.md) ] |
 | [tg-notipy](#telegram-bot-notifications-python---tg-notipy) | Send telegram messages using a script written in Python, no dependencies, using Bot API. | [ [DOC](tg-notipy/README.md) ] |
 
 ### Agent Loader - [agent]
@@ -79,7 +79,7 @@ A skill that automatically moves files using `git mv` for git-tracked files to p
 
 ### Telegram Bot Notifications (CLI) - [tg-notify]
 
-A skill for sending Telegram bot notifications through the [`tg-notify` command-line tool](https://gitlab.com/lyoneel/cli-tg-notify), a Go CLI, using Bot API. It maps user intent to one of six operations (message, file, album, discover, whoami, config), loads the matching mode recipe and its cross-reference guides, and returns a ready command with a verification probe. Use it when composing or debugging tg-notify commands, or sending messages, files, and albums from within Crush. Compared with the [Python sender](#telegram-bot-notifications-python---tg-notipy), the Go CLI adds a few features: shell completion for bash, zsh, and fish, and socks5/socks5h proxy support. Where features overlap, both share the same structure and parameters, so at feature parity the two are interchangeable.
+A skill for sending Telegram bot notifications through the [`tg-notify` command-line tool](https://gitlab.com/lyoneel/tg-notify), a Go CLI, using Bot API. It maps user intent to one of six operations (message, file, album, discover, whoami, config), loads the matching mode recipe and its cross-reference guides, and returns a ready command with a verification probe. Use it when composing or debugging tg-notify commands, or sending messages, files, and albums from within Crush. Compared with the [Python sender](#telegram-bot-notifications-python---tg-notipy), the Go CLI adds a few features: shell completion for bash, zsh, and fish, and socks5/socks5h proxy support. Where features overlap, both share the same structure and parameters, so at feature parity the two are interchangeable.
 
 [ [UP to skills table](#skills-table) ] [ [More info in README](tg-notify/README.md) ]
 

@@ -140,6 +140,6 @@ skill documents, with `flag provided but not defined` and exit 1.
 
 Fix: run `tg-notify -v`, compare against the baseline version in
 SKILL.md, and suggest that the user update the binary, for example
-with `go install gitlab.com/lyoneel/cli-tg-notify/cmd/tg-notify@latest`
+with `go install gitlab.com/lyoneel/tg-notify/cmd/tg-notify@latest`
 or a fresh build from the project. The skill never rebuilds or
 reinstalls on its own.

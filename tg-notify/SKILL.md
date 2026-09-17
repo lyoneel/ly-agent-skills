@@ -48,7 +48,7 @@ v1.1.20260825, the baseline version. Compare the output of
 the baseline, or a documented flag fails with
 `flag provided but not defined` (G-stale), stop and suggest that the
 user update the binary, for example with
-`go install gitlab.com/lyoneel/cli-tg-notify/cmd/tg-notify@latest` or
+`go install gitlab.com/lyoneel/tg-notify/cmd/tg-notify@latest` or
 a fresh build from the project. Then resume.
 
 Read `references/gotchas.md` before executing operations.
